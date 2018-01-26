@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>read입니다.</title>
+    </head>
+    <body>
+        <% data.forEach(function(item, index){ %>
+        <div>
+            <%= item.id%>번 : <%= item.user%>님 의견 : <%= item.contents%>
+        </div>
+        <% }); %>
+    </body>
+</html>
