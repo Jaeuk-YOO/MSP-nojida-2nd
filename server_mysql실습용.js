@@ -4,20 +4,16 @@ var ejs = require('ejs');
 var mysql = require('mysql');
 
 var express = require('express');
-
-//mysql부분 폼태그데이터 넘겨받기
 var bodyParser = require('body-parser');
 
-//mysql 연결~
+//입력 1
 var client = mysql.createConnection({
     user:'root',
-    password:'wodnrdl992',
+    password:'비밀번호를 입력하세요.',
     database: 'Post'
 });
 
 var app = express();
-
-//mysql 바디파서관련
 app.use(bodyParser.urlencoded({
     extended: false
 }));
@@ -32,19 +28,19 @@ app.use('/show_kitten', function(request, response){
     response.end('<img src="/kitten.jpg">');
 });
 
-//create form get
-app.get('/create', function(request, response){
+//입력 2 form get
+app.get('', function(request, response){
     fs.readFile('create.ejs', 'utf8', function(error,data) {
         response.send(data);
     });
 });
 
-//create form post
-app.post('/create', function(request, response){
+//입력 3 form post
+app.post('', function(request, response){
     var body = request.body;
 
     client.query('INSERT INTO posts (user, contents) VALUES (?, ?)', [body.user, body.contents], function(){
-        response.redirect('/read')
+        response.redirect('') //입력 4 어디로 보낼것인가!
     });
 });
 
